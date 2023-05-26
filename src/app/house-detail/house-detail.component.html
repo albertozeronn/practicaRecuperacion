@@ -1,0 +1,44 @@
+<div
+    class="flex flex-col items-center border rounded-lg shadow md:flex-row w-full h-full  object-scale-down border-gray-700 bg-gray-800 ">
+    <div class="flex flex-col justify-center w-full">
+        <div class="flex justify-center">
+            <p *ngIf="selectedHouse?.name !== ''" class="mb-2 text-3xl font-bold text-white text-center">{{ selectedHouse!.name | uppercase}}</p>
+        </div>
+        <div class="flex flex-col justify-center items-center p-4 gap-2">
+            <h3 class="font-semibold text-gray-400 text-2xl underline">Details:</h3>
+            <p *ngIf="selectedHouse?.region" class="font-normal text-gray-400 text-xl">Region: {{ selectedHouse?.region }}</p>
+            <p *ngIf="selectedHouse?.coatOfArms" class="font-normal text-gray-400 text-xl">Coat Of Arms: {{ selectedHouse?.coatOfArms }}</p>
+            <p *ngIf="selectedHouse?.words" class="font-normal text-gray-400 text-xl">Words: {{ selectedHouse?.words }}</p>
+            <p *ngIf="currentLord?.name === ''" class="font-normal text-gray-400 text-xl">Current Lord: {{ currentLord!.aliases[0] | uppercase }}</p>
+            <p *ngIf="currentLord?.name !== ''" class="font-normal text-gray-400 text-xl">Current Lord: {{ currentLord!.name | uppercase }}</p>
+            <p *ngIf="heir?.name === ''" class="font-normal text-gray-400 text-xl">Heir: {{ heir!.aliases[0] | uppercase }}</p>
+            <p *ngIf="heir?.name !== ''" class="font-normal text-gray-400 text-xl">Heir: {{ heir!.name | uppercase }}</p>
+            <p *ngIf="overlord?.name !== ''" class="font-normal text-gray-400 text-xl">Overlord: {{ overlord!.name | uppercase }}</p>
+            <p *ngIf="selectedHouse?.founded" class="font-normal text-gray-400 text-xl">Founded: {{ selectedHouse?.founded }}</p>
+            <p *ngIf="founder?.name === ''" class="font-normal text-gray-400 text-xl">Founder: {{ founder!.aliases[0] | uppercase }}</p>
+            <p *ngIf="founder?.name !== ''" class="font-normal text-gray-400 text-xl">Founder: {{ founder!.name | uppercase }}</p>
+            <p *ngIf="selectedHouse?.diedOut" class="font-normal text-gray-400 text-xl">Died Out: {{ selectedHouse?.diedOut }}</p>
+            <h4 class="font-semibold text-gray-400 text-xl underline">Sworn Members</h4>
+            <p *ngIf="selectedHouse?.swornMembers" class="font-normal text-gray-400 text-xl">Tiene un total de : {{ totalMembers }} Sworn Members</p>
+            <h4 class="font-semibold text-gray-400 text-xl underline">Ancestral Weapons</h4>
+            <ul *ngFor="let weapon of selectedHouse?.ancestralWeapons">
+                <li class="text-gray-400">{{ weapon }}</li>
+            </ul>
+            <h4 class="font-semibold text-gray-400 text-xl underline">Titles</h4>
+            <ul *ngFor="let title of selectedHouse?.titles">
+                <li class="text-gray-400">{{ title }}</li>
+            </ul>
+            <h4 class="font-semibold text-gray-400 text-xl underline">Seats</h4>
+            <ul *ngFor="let seat of selectedHouse?.seats">
+                <li class="text-gray-400">{{ seat }}</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="flex flex-col justify-center items-center m-4">
+    <button (click)="goBack()"
+        class=" center text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-0 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">
+        Go Back
+    </button>
+</div>
